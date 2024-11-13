@@ -19,7 +19,7 @@ export const Input = ({
             placeholder={placeholder}
             value={value}
             onChange={onChange}
-            className={`px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 ${className}`}
+            className={`w-full px-2 py-1.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400 bg-green-50 placeholder-green-500 text-green-700 focus:bg-white transition-all ease-in-out duration-300 ${className}`}
         />
     );
 };
