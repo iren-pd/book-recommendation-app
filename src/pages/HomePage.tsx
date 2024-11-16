@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { FC } from 'react'
+import { SearchBar } from '@recobook/components/Search/SearchBar'
 
-export const HomePage = () => {
+export const HomePage: FC = () => {
   return (
-    <div>HomePage</div>
+    <div>
+        <SearchBar/>
+    </div>
   )
 }

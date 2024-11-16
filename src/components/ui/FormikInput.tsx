@@ -21,7 +21,7 @@ export const FormikInput: FC<FormikInputProps> = ({ label, type = 'text', name }
                     type={type}
                     id={name}
                     name={name}
-                    className={`w-full px-2 py-1.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400 bg-green-50 placeholder-green-500 text-green-700 focus:bg-white transition-all ease-in-out duration-300`}
+                    className='w-full px-2 py-1.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400 bg-green-50 placeholder-green-500 text-green-700 focus:bg-white transition-all ease-in-out duration-300'
                 />
                 <ErrorMessage
                     name={name}
