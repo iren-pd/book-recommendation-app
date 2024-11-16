@@ -1,13 +1,14 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { Button } from '@recobook/components/ui/Button';
+import { FormikInput } from '@recobook/components/ui/FormikInput';
+import { Form, Formik } from 'formik';
+import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
-import { Button } from '../ui/Button';
-import { Input } from '../ui/Input';
 
-export const RegistrationPage = () => {
+export const RegistrationPage: FC = () => {
     const navigate = useNavigate();
 
-    const validationSchema = Yup.object({
+    const validationSchema = Yup.object().shape({
         name: Yup.string()
             .min(2, 'Слишком короткое имя')
             .max(10, 'Слишком длинное имя')
@@ -17,7 +18,7 @@ export const RegistrationPage = () => {
             .required('Обязательное поле'),
         password: Yup.string()
             .min(6, 'Минимальная длина пароля 6 символов')
-            .max(10, 'Слишком длинный пароль')
+            .max(20, 'Слишком длинный пароль')
             .required('Обязательное поле'),
         confirmPassword: Yup.string()
             .oneOf(
@@ -35,7 +36,9 @@ export const RegistrationPage = () => {
     };
 
     const handleSubmit = (values: any) => {
-        navigate('/');
+        console.log('values register', values);
+
+        navigate('/login');
     };
 
     return (
@@ -45,106 +48,35 @@ export const RegistrationPage = () => {
                     Регистрация
                 </h1>
                 <Formik
+                    preventDefault
                     initialValues={initialValues}
                     validationSchema={validationSchema}
                     onSubmit={handleSubmit}
                 >
-                    {({ isSubmitting }) => (
+                    {() => (
                         <Form className="space-y-6">
-                            <div className="mb-4 flex justify-between items-baseline">
-                                <label
-                                    htmlFor="name"
-                                    className="block w-1/2 text-lg text-green-700 mb-2"
-                                >
-                                    Имя
-                                </label>
-                                <div className="w-full ml-2 flex flex-col space-y-1">
-                                    <Field
-                                        type="text"
-                                        id="name"
-                                        name="name"
-                                        component={Input}
-                                    />
-                                    <ErrorMessage
-                                        name="name"
-                                        component="div"
-                                        className="text-red-500 text-sm mt-1"
-                                    />
-                                </div>
-                            </div>
+                            <FormikInput label="Имя" name="name" />
 
-                            <div className="mb-4 flex justify-between items-baseline">
-                                <label
-                                    htmlFor="email"
-                                    className="block w-1/2 text-lg text-green-700 mb-2"
-                                >
-                                    Email
-                                </label>
-                                <div className="w-full ml-2 flex flex-col space-y-1">
-                                    <Field
-                                        type="email"
-                                        id="email"
-                                        name="email"
-                                        component={Input}
-                                    />
-                                    <ErrorMessage
-                                        name="email"
-                                        component="div"
-                                        className="text-red-500 text-sm mt-1"
-                                    />
-                                </div>
-                            </div>
+                            <FormikInput
+                                label="Email"
+                                type="email"
+                                name="email"
+                            />
 
-                            <div className="mb-4 flex justify-between items-baseline">
-                                <label
-                                    htmlFor="password"
-                                    className="block w-1/2 text-lg text-green-700 mb-2"
-                                >
-                                    Пароль
-                                </label>
-                                <div className="w-full ml-2 flex flex-col space-y-1">
-                                    <Field
-                                        type="password"
-                                        id="password"
-                                        name="password"
-                                        component={Input}
-                                    />
-                                    <ErrorMessage
-                                        name="password"
-                                        component="div"
-                                        className="text-red-500 text-sm mt-1"
-                                    />
-                                </div>
-                            </div>
+                            <FormikInput
+                                label="Пароль"
+                                type="password"
+                                name="password"
+                            />
 
-                            <div className="mb-4 flex items-baseline">
-                                <label
-                                    htmlFor="confirmPassword"
-                                    className="block w-1/2 text-lg text-green-700 mb-2"
-                                >
-                                    Подтвердите пароль
-                                </label>
-                                <div className="w-full ml-2 flex flex-col space-y-1">
-                                    <Field
-                                        type="password"
-                                        id="confirmPassword"
-                                        name="confirmPassword"
-                                        component={Input}
-                                    />
-                                    <ErrorMessage
-                                        name="confirmPassword"
-                                        component="div"
-                                        className="text-red-500 text-sm mt-1"
-                                    />
-                                </div>
-                            </div>
+                            <FormikInput
+                                label="Подтвердите пароль"
+                                type="password"
+                                name="confirmPassword"
+                            />
 
                             <Button
-                                text={
-                                    isSubmitting
-                                        ? 'Подтверждение...'
-                                        : 'Регистрация'
-                                }
+                                text="Регистрация"
                                 type="submit"
                                 className="mt-4 w-full"
                             />
