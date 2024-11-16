@@ -1,10 +1,14 @@
+import { Footer } from '@recobook/components/layout/Footer';
+import { Header } from '@recobook/components/layout/Header';
+import { Main } from '@recobook/components/layout/Main';
 import './index.css';
-import AppRouter from './routes/AppRouter';
 
 function App() {
     return (
-        <div>
-            <AppRouter />
+        <div className="h-screen grid grid-rows-[auto_1fr_auto]">
+            <Header />
+            <Main />
+            <Footer />
         </div>
     );
 }
