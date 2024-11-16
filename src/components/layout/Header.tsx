@@ -9,7 +9,7 @@ export const Header: FC = () => {
 
     return (
         !isAuth && (
-            <header className="bg-green-400 text-white shadow-lg py-4">
+            <header className="bg-green-300 text-white shadow-lg py-2">
                 <div className="container mx-auto flex justify-between items-center px-4">
                     <a href="/" className="hover:text-green-300">
                         <img

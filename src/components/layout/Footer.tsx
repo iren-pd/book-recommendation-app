@@ -7,8 +7,10 @@ export const Footer: FC = () => {
 
     return (
         !isAuth && (
-            <footer>
-                <div className="w-full max-w-5xl px-4">Footer</div>
+            <footer className="bg-green-800 text-white shadow-lg py-3 bg-cover bg-center">
+                <p className="container mx-auto flex justify-center font-bold">
+                    RecoBook
+                </p>
             </footer>
         )
     );
